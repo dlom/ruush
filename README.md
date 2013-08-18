@@ -1,6 +1,6 @@
 # Ruush
 
-TODO: Write a gem description
+Command-line access to puush.me via ruby
 
 ## Installation
 

@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Mark Old"]
   spec.email         = ["dlom234@gmail.com"]
   spec.description   = %q{puush client in ruby}
-  spec.summary       = %q{command-line access to puush.me via ruby}
+  spec.summary       = %q{Command-line access to puush.me via ruby}
   spec.homepage      = "https://github.com/Dlom/ruush"
   spec.license       = "MIT"
 
