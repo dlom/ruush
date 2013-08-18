@@ -1,32 +1,16 @@
 module Ruush
   class Auth
+    AUTH_ENDPOINT = Ruush::endpoint "/api/auth"
+
     class << self
-      AUTH_ENDPOINT = Ruush.endpoint "/api/auth"
-
-      def parse_auth(body)
-        if body == "-1" # FAILURE SOMEHOW
-          return {
-            :key  => "",
-            :is_premium  => false,
-            :usage_bytes => 0
-          }
-        end # else success (we hope)
-        auth_data = body.split ","
-        {
-          :key  => auth_data[1],
-          :is_premium  => auth_data[0] != "0",
-          :usage_bytes => auth_data[3].to_i
-        }
-      end
-
       def password_auth(email, password)
         response = RestClient.post AUTH_ENDPOINT, :e => email, :p => password, :z => "poop"
-        parse_auth response.body
+        Parser::parse_auth response.body
       end
 
       def key_auth(email, key)
         response = RestClient.post AUTH_ENDPOINT, :e => email, :k => key, :z => "poop"
-        parse_auth response.body
+        Parser::parse_auth response.body
       end
 
       def get_key(email, password)
