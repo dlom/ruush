@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Ruush::VERSION
   spec.authors       = ["Mark Old"]
   spec.email         = ["dlom234@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{puush client in ruby}
+  spec.summary       = %q{command-line access to puush.me via ruby}
+  spec.homepage      = "https://github.com/Dlom/ruush"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
