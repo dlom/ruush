@@ -2,30 +2,40 @@ module Ruush
   class Auth
     AUTH_ENDPOINT = Ruush::endpoint "/api/auth"
 
+    AuthObject = Struct.new(:premium_string, :key, :unused, :usage_string, :err) do # order is important here, as is the unused field
+      def is_premium
+        premium_string != "0"
+      end
+
+      def usage_bytes
+        usage_string.to_i
+      end
+    end
+
     class << self
       def password_auth(email, password)
-        response = RestClient.post AUTH_ENDPOINT, :e => email, :p => password, :z => "poop"
+        response = RestClient.post AUTH_ENDPOINT, :e => email, :p => password, :z => "poop" # pooping is necessary
         Parser::parse_auth response.body
       end
 
-      def key_auth(email, key)
-        response = RestClient.post AUTH_ENDPOINT, :e => email, :k => key, :z => "poop"
+      def key_auth(key)
+        response = RestClient.post AUTH_ENDPOINT, :k => key, :z => "poop" # pooping is necessary, email is not?
         Parser::parse_auth response.body
       end
 
       def get_key(email, password)
         auth_data = password_auth email, password
-        auth_data[:key]
+        auth_data.key
       end
 
-      def get_premium(email, key)
-        auth_data = key_auth email, key
-        auth_data[:is_premium]
+      def get_premium(key)
+        auth_data = key_auth key
+        auth_data.is_premium
       end
 
-      def get_usage(email, key)
-        auth_data = key_auth email, key
-        auth_data[:usage_bytes]
+      def get_usage(key)
+        auth_data = key_auth key
+        auth_data.usage_bytes
       end
     end
   end
