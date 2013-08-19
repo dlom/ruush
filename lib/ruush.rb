@@ -8,7 +8,8 @@ require "ruush/parser"
 require "ruush/auth"
 require "ruush/history"
 require "ruush/upload"
+require "ruush/delete"
 
 module Ruush
-  # Your code goes here...
+  # who needs code here
 end
