@@ -1,7 +1,7 @@
 module Ruush
   class Delete
     DEL_ENDPOINT = Ruush::endpoint "/api/del"
-    # /api/del returns the same object structure as /api/hist, so we can reuse the struct
+    # /api/del returns the same object structure as /api/hist, so we don't need a new struct
 
     class << self
       def delete(key, id)
