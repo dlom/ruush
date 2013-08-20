@@ -2,7 +2,7 @@
 
 Command-line access to puush via ruby
 
-This version of ruush is compatible with puush v93
+This version of ruush is compatible with puush r93
 
 ## Installation
 
