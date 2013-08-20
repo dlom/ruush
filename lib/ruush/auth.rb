@@ -25,16 +25,19 @@ module Ruush
 
       def get_key(email, password)
         auth_data = auth_password email, password
+        raise auth_data.err if auth_data.err
         auth_data.key
       end
 
       def get_premium(key)
         auth_data = auth_key key
+        raise auth_data.err if auth_data.err
         auth_data.is_premium
       end
 
       def get_usage(key)
         auth_data = auth_key key
+        raise auth_data.err if auth_data.err
         auth_data.usage_bytes
       end
     end
