@@ -10,6 +10,8 @@ require "ruush/history"
 require "ruush/upload"
 require "ruush/delete"
 
+require "ruush/config"
+
 module Ruush
   # who needs code here
 end
