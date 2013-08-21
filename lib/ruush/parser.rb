@@ -57,7 +57,7 @@ module Ruush
         }
         upload_data = body.split ","
         if error_codes.has_key? upload_data[0] # account for multiple error codes
-          raise error_codes[0], error_codes[1]
+          raise error_codes[upload_data[0]][0], error_codes[upload_data[0]][1]
         end
         UploadObject.new *upload_data[1..-1] # first element is always "0"
       end

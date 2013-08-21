@@ -13,5 +13,14 @@ require "ruush/delete"
 require "ruush/config"
 
 module Ruush
-  # who needs code here
+  @config_file = "#{Dir.home}/.ruush"
+  @config = Config.new @config_file
+
+  def self.config
+    @config
+  end
+
+  def self.write_config
+    @config.write "#{Dir.home}/.ruush"
+  end
 end

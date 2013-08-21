@@ -1,5 +1,5 @@
 module Ruush
-  class History
+  class Api
     HIST_ENDPOINT = Ruush::endpoint "/api/hist"
 
     class << self
