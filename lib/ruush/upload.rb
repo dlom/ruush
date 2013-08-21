@@ -2,7 +2,7 @@ module Ruush
   class Upload
     UP_ENDPOINT = Ruush::endpoint "/api/up"
 
-    UploadObject = Struct.new(:url, :id, :usage_string, :err) do # order is important here
+    UploadObject = Struct.new(:url, :id, :usage_string) do # order is important here
       def usage_bytes
         usage_string.to_i
       end
@@ -10,6 +10,7 @@ module Ruush
 
     class << self
       def upload_file(key, file) # will fail silently if upload is too big.
+        raise ArgumentError, "#{file.inspect} is not a File object" if !file.is_a? File
         hash = Digest::MD5.file(file).hexdigest # straight hash of the file
         begin
           response = RestClient.post UP_ENDPOINT, :k => key, :c => hash, :z => "poop", :f => file # pooping is necessary

@@ -2,7 +2,7 @@ module Ruush
   class History
     HIST_ENDPOINT = Ruush::endpoint "/api/hist"
 
-    HistoryObject = Struct.new(:id, :time_string, :url, :filename, :view_count_string, :err) do # order is important here
+    HistoryObject = Struct.new(:id, :time_string, :url, :filename, :view_count_string) do # order is important here
       def timestamp
         DateTime.parse time_string
       end
