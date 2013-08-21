@@ -1,8 +1,8 @@
 # ruush
 
-Command-line access to puush via ruby
+Command-line access to [puush](https://puush.me) via ruby
 
-This version of ruush is compatible with puush r93
+`ruush` is compatible with puush r93
 
 ## Installation
 
