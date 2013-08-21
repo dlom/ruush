@@ -1,5 +1,5 @@
 module Ruush
-  class Api
+  class Parser
     class << self
       def parse_hist(body)
         hist_objects = []
