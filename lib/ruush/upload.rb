@@ -1,5 +1,5 @@
 module Ruush
-  class Upload
+  class Api
     UP_ENDPOINT = Ruush::endpoint "/api/up"
 
     UploadObject = Struct.new(:url, :id, :usage_string) do # order is important here

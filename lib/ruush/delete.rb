@@ -1,5 +1,5 @@
 module Ruush
-  class Delete
+  class Api
     DEL_ENDPOINT = Ruush::endpoint "/api/del"
     # /api/del returns the same object structure as /api/hist, so we don't need a new struct
 

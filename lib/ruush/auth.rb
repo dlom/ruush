@@ -1,5 +1,5 @@
 module Ruush
-  class Auth
+  class Api
     AUTH_ENDPOINT = Ruush::endpoint "/api/auth"
 
     AuthObject = Struct.new(:premium_string, :key, :unused, :usage_string) do # order is important here, as is the unused field

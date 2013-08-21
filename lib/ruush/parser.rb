@@ -1,10 +1,10 @@
 module Ruush
-  class Parser
+  class Api
     class << self
       def parse_hist(body)
         hist_objects = []
         if body == "-1" # only (known) error code
-          raise Errors::BadKey, "API Key is invalid"
+          raise BadKey, "API Key is invalid"
         else
           body.split("0\n")[1..-1].each do |hist_data| # we have to split on "0\n", and the first element is always blank
             hist_objects.push History::HistoryObject.new *hist_data.split(",") # magic
@@ -15,16 +15,16 @@ module Ruush
 
       def parse_auth(body)
         if body == "-1" # only (known) error code
-          raise Errors::BadAuth, "Credentials are invalid"
+          raise BadAuth, "Credentials are invalid"
         end
         Auth::AuthObject.new *body.split(",")
       end
 
       def parse_upload(body)
         error_codes = {
-          "-1" => [Errors::BadKey, "API Key is invalid"],
-          "-2" => [Errors::BadData, "Data sent is invalid"],
-          "-3" => [Errors::BadHash, "Data hash is invalid"]
+          "-1" => [BadKey, "API Key is invalid"],
+          "-2" => [BadData, "Data sent is invalid"],
+          "-3" => [BadHash, "Data hash is invalid"]
           # "-?" => [Errors::QuotaExceded, "Quota exceded"] (needs more research)
         }
         upload_data = body.split ","
