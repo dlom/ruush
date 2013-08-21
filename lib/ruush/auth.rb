@@ -2,16 +2,6 @@ module Ruush
   class Api
     AUTH_ENDPOINT = Ruush::endpoint "/api/auth"
 
-    AuthObject = Struct.new(:premium_string, :key, :unused, :usage_string) do # order is important here, as is the unused field
-      def is_premium
-        premium_string != "0"
-      end
-
-      def usage_bytes
-        usage_string.to_i
-      end
-    end
-
     class << self
       def auth_password(email, password)
         response = RestClient.post AUTH_ENDPOINT, :e => email, :p => password, :z => "poop" # pooping is necessary

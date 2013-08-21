@@ -1,12 +1,8 @@
+require "digest"
+
 module Ruush
   class Api
     UP_ENDPOINT = Ruush::endpoint "/api/up"
-
-    UploadObject = Struct.new(:url, :id, :usage_string) do # order is important here
-      def usage_bytes
-        usage_string.to_i
-      end
-    end
 
     class << self
       def upload_file(key, file) # will fail silently if upload is too big.
