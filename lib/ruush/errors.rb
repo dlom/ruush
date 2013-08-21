@@ -1,29 +1,29 @@
 module Ruush
   class Errors
-    class RuushError < StandardError
+    class Error < StandardError
       def to_s
         message
       end
     end
-    class BadKey < RuushError
+    class BadKey < Error
       def message
         "API Key is invalid"
       end
     end
 
-    class BadAuth < RuushError
+    class BadAuth < Error
       def message
         "Credentials are invalid"
       end
     end
 
-    class BadData < RuushError
+    class BadData < Error
       def message
         "Data sent is invalid"
       end
     end
 
-    class BadHash < RuushError
+    class BadHash < Error
       def message
         "Data hash is invalid"
       end
