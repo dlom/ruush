@@ -32,7 +32,7 @@ module Ruush
       def parse_hist(body)
         hist_objects = []
         if body == "-1" # only (known) error code
-          raise BadKey, "API Key is invalid"
+          raise BadKey, "API key is invalid"
         else
           body.split("0\n")[1..-1].each do |hist_data| # we have to split on "0\n", and the first element is always blank
             hist_objects.push HistoryObject.new *hist_data.split(",") # magic
@@ -50,7 +50,7 @@ module Ruush
 
       def parse_upload(body)
         error_codes = {
-          "-1" => [BadKey, "API Key is invalid"],
+          "-1" => [BadKey, "API key is invalid"],
           "-2" => [BadData, "Data sent is invalid"],
           "-3" => [BadHash, "Data hash is invalid"]
           # "-?" => [Errors::QuotaExceded, "Quota exceded"] (needs more research)

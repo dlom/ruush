@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+
+bin_file = Pathname.new(__FILE__).realpath # thanks heroku
+$:.unshift File.expand_path("../../lib", bin_file)
+
+trap("SIGINT") { puts "Aborting"; exit! } # don't throw errors while doing user input
+
+require "ruush"
+
+begin
+  Ruush::CLI::run!
+rescue Slop::Error => e
+  warn e
+rescue Ruush::Error => e
+  warn e
+rescue ArgumentError, Errno::ENOENT => e
+  warn e
+end
+
+Ruush::write_config # update .ruush with new info from this run

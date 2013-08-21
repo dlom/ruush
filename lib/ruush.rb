@@ -4,13 +4,15 @@ require "rest-client"
 
 require "ruush/endpoint"
 require "ruush/errors"
+require "ruush/config"
+
 require "ruush/parser"
 require "ruush/auth"
 require "ruush/history"
 require "ruush/upload"
 require "ruush/delete"
 
-require "ruush/config"
+require "ruush/cli"
 
 module Ruush
   @config_file = "#{Dir.home}/.ruush"
