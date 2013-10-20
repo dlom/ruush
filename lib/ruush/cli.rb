@@ -24,6 +24,7 @@ module Ruush
 
               print "Email: "
               email = ($stdin.gets || "").chomp
+              exit if email == ""
               print "Password: "
               password = ($stdin.noecho(&:gets) || "").chomp
               print "\n"
