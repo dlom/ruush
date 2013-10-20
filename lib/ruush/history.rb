@@ -4,7 +4,11 @@ module Ruush
 
     class << self
       def get_hist(key) # only returns 10 most recent
-        response = RestClient.post HIST_ENDPOINT, :k => key # no pooping necessary here
+        begin
+          response = RestClient.post HIST_ENDPOINT, :k => key # no pooping necessary here
+        rescue RestClient::ServiceUnavailable
+          return []
+        end
         Parser::parse_hist response.body
       end
     end

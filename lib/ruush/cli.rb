@@ -96,13 +96,17 @@ module Ruush
 
               begin
                 history = Api::get_hist Ruush::config["key"]
-                history.each do |h|
-                  if opts.to_h[:files]
-                    puts h.filename
-                  elsif opts.to_h[:urls]
-                    puts h.url
-                  else
-                    puts "#{h.url} - #{h.filename}"
+                if history.length == 0
+                  puts "You have no puushes!"
+                else
+                  history.each do |h|
+                    if opts.to_h[:files]
+                      puts h.filename
+                    elsif opts.to_h[:urls]
+                      puts h.url
+                    else
+                      puts "#{h.url} - #{h.filename}"
+                    end
                   end
                 end
               rescue BadKey => e
