@@ -125,10 +125,10 @@ module Ruush
               begin
                 bytes = Api::get_usage Ruush::config["key"]
                 Ruush::config["usage_bytes"] = bytes
-                if opts.to_h[:bytes]
-                  puts "Current usage: %d bytes" % bytes
-                elsif opts.to_h[:raw]
+                if opts.to_h[:raw]
                   puts bytes
+                elsif opts.to_h[:bytes]
+                  puts "Current usage: %d bytes" % bytes
                 else
                   puts "Current usage: %.2fMB" % (bytes / 1048576.0) # bytes in a megabyte
                 end
