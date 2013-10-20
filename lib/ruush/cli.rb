@@ -1,4 +1,5 @@
 require "slop"
+require "io/console"
 
 module Ruush
   class CLI
@@ -24,9 +25,7 @@ module Ruush
               print "Email: "
               email = ($stdin.gets || "").chomp
               print "Password: "
-              system "stty -echo" if $stdin.tty?
-              password = ($stdin.gets || "").chomp
-              system "stty echo" if $stdin.tty?
+              password = ($stdin.noecho(&:gets) || "").chomp
               print "\n"
 
               begin
