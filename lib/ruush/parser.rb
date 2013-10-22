@@ -1,6 +1,6 @@
 module Ruush
   class Parser
-    AuthObject = Struct.new(:premium_string, :key, :unused, :usage_string) do # order is important here, as is the unused field
+    AuthObject = Struct.new(:premium_string, :key, :expiry, :usage_string) do # order is important here, expiry is always blank? (means never)
       def is_premium
         premium_string != "0"
       end

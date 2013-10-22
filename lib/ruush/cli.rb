@@ -88,6 +88,8 @@ module Ruush
             banner "Usage: ruush list [options]"
             on :f, :files, "Only print filenames"
             on :u, :urls, "Only print URLs"
+            on :n=, :number=, "Number of puushes to list (defaults 10)", :as => Integer
+            on :o=, :offset=, "How many puushes to skip before listing (defaults 0)", :as => Integer # confusing
 
             run do |opts, args|
               raise Slop::InvalidArgumentError, "Too many arguments (expected zero)" if args.length > 0
@@ -95,7 +97,7 @@ module Ruush
               CLI::die "Please run `ruush setup` or place your API key in ~/.ruush" if Ruush::config["key"] == ""
 
               begin
-                history = Api::get_hist Ruush::config["key"]
+                history = Api::get_hist Ruush::config["key"], (opts.to_h[:number] || 10), (opts.to_h[:offset] || 0)
                 if history.length == 0
                   puts "You have no puushes!"
                 else
