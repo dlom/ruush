@@ -23,7 +23,7 @@ def mock_history(key)
     things.push "#{i},1970-#{i}-1 12:34:56,http://puu.sh/#{i}.png,#{i}.gif,#{i}"
   end
   body = "0\n#{things.join(",0\n")},0\n"
-  stub_request(:post, Ruush::endpoint("/api/hist")).with(:body => {:k => key}).to_return :body => body
+  stub_request(:post, Ruush::endpoint("/api/hist")).with(:body => {:k => key, :l => 10.to_s, :o => 0.to_s}).to_return :body => body
 end
 
 def mock_delete(key, id)

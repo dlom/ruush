@@ -18,7 +18,7 @@ describe "Authentication" do
       result = Ruush::Api::auth_password email, password
 
       result.key.should eq key
-      result.unused.should eq ""
+      result.expiry.should eq ""
       result.is_premium.should eq true
       result.usage_bytes.should eq 10000
       stub.should have_been_requested
@@ -32,7 +32,7 @@ describe "Authentication" do
       result = Ruush::Api::auth_key key
 
       result.key.should eq key
-      result.unused.should eq ""
+      result.expiry.should eq ""
       result.is_premium.should eq false
       result.usage_bytes.should eq 100
       stub.should have_been_requested
