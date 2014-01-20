@@ -1,4 +1,4 @@
-# ruush [![Build Status](https://travis-ci.org/Dlom/ruush.png?branch=master)](https://travis-ci.org/Dlom/ruush) [![Gem Version](https://badge.fury.io/rb/ruush.png)](http://badge.fury.io/rb/ruush)
+# ruush [![Build Status](https://travis-ci.org/dlom/ruush.png?branch=master)](https://travis-ci.org/Dlom/ruush) [![Gem Version](https://badge.fury.io/rb/ruush.png)](http://badge.fury.io/rb/ruush)
 
 Command-line access to [puush](https://puush.me) via ruby
 
